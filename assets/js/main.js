@@ -14,9 +14,9 @@ const defaultProfile = {
     phone: (typeof profileData !== "undefined" && profileData.phone) ? profileData.phone : "+62 831-4304-8170",
     location: (typeof profileData !== "undefined" && profileData.location) ? profileData.location : "Bandung, Jawa Barat",
     linkedin: (typeof profileData !== "undefined" && profileData.linkedin) ? profileData.linkedin : "https://www.linkedin.com/in/samsul-sidiq-471a8a443",
-    linkedinDisplay: (typeof profileData !== "undefined" && profileData.linkedinDisplay) ? profileData.linkedinDisplay : "linkedin.com/in/samsul-sidiq-471a8a443",
+    linkedinDisplay: (typeof profileData !== "undefined" && profileData.linkedinDisplay) ? profileData.linkedinDisplay : "Mochamad Shcamsul Sieddik Permana",
     github: (typeof profileData !== "undefined" && profileData.github) ? profileData.github : "https://github.com/SamsulSidiq",
-    githubDisplay: (typeof profileData !== "undefined" && profileData.githubDisplay) ? profileData.githubDisplay : "github.com/SamsulSidiq",
+    githubDisplay: (typeof profileData !== "undefined" && profileData.githubDisplay) ? profileData.githubDisplay : "Mochamad Shcamsul Sieddik Permana",
     university: (typeof profileData !== "undefined" && profileData.university) ? profileData.university : "Institut Digital Ekonomi LPKIA Bandung",
     major: (typeof profileData !== "undefined" && profileData.major) ? profileData.major : "Teknik Informatika",
     gradYear: (typeof profileData !== "undefined" && profileData.gradYear) ? profileData.gradYear : "2026",
@@ -77,11 +77,11 @@ function renderProfileData() {
     const photoImg = document.getElementById("hero-profile-img");
     const photoFallback = document.getElementById("hero-photo-fallback");
     if (photoImg) {
-        photoImg.onload = function() {
+        photoImg.onload = function () {
             photoImg.classList.remove("hidden");
             if (photoFallback) photoFallback.classList.add("hidden");
         };
-        photoImg.onerror = function() {
+        photoImg.onerror = function () {
             photoImg.classList.add("hidden");
             if (photoFallback) photoFallback.classList.remove("hidden");
         };
@@ -119,7 +119,7 @@ function getInitials(name) {
 function initTheme() {
     const savedTheme = localStorage.getItem("portfolio_theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
+
     if (savedTheme === "light") {
         document.documentElement.classList.remove("dark");
         updateThemeIcons(false);
@@ -339,7 +339,7 @@ function setupEventListeners() {
 
             const body = encodeURIComponent(`Halo ${activeProfile.fullName},\n\nNama/Perusahaan: ${name} (${email})\n\nPesan:\n${text}`);
             const mailtoUri = `mailto:${activeProfile.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
-            
+
             window.location.href = mailtoUri;
             showToast("🚀 Membuka aplikasi email...");
         });

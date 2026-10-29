@@ -16,9 +16,9 @@ const profileData = {
     phone: "+62 831-4304-8170",
     location: "Bandung, Jawa Barat",
     linkedin: "https://www.linkedin.com/in/samsul-sidiq-471a8a443",
-    linkedinDisplay: "linkedin.com/in/samsul-sidiq-471a8a443",
+    linkedinDisplay: "Mochamad Shcamsul Sieddik Permana",
     github: "https://github.com/SamsulSidiq",
-    githubDisplay: "github.com/SamsulSidiq",
+    githubDisplay: "Mochamad Shcamsul Sieddik Permana",
 
     // Latar Belakang Pendidikan
     university: "Institut Digital Ekonomi LPKIA Bandung",
