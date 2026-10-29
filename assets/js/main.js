@@ -11,10 +11,10 @@ const defaultProfile = {
     status: (typeof profileData !== "undefined" && profileData.status) ? profileData.status : "Sarjana (S1) • Lulusan 2026 | Terbuka untuk Peluang Magang & Kerja Profesional",
     photoUrl: (typeof profileData !== "undefined" && profileData.photoUrl) ? profileData.photoUrl : "assets/images/profile.jpg",
     email: (typeof profileData !== "undefined" && profileData.email) ? profileData.email : "samsulsidiq120@gmail.com",
-    phone: (typeof profileData !== "undefined" && profileData.phone) ? profileData.phone : "+62 812-3456-7890",
+    phone: (typeof profileData !== "undefined" && profileData.phone) ? profileData.phone : "+62 831-4304-8170",
     location: (typeof profileData !== "undefined" && profileData.location) ? profileData.location : "Bandung, Jawa Barat",
-    linkedin: (typeof profileData !== "undefined" && profileData.linkedin) ? profileData.linkedin : "https://linkedin.com/in/username",
-    linkedinDisplay: (typeof profileData !== "undefined" && profileData.linkedinDisplay) ? profileData.linkedinDisplay : "linkedin.com/in/username",
+    linkedin: (typeof profileData !== "undefined" && profileData.linkedin) ? profileData.linkedin : "https://www.linkedin.com/in/samsul-sidiq-471a8a443",
+    linkedinDisplay: (typeof profileData !== "undefined" && profileData.linkedinDisplay) ? profileData.linkedinDisplay : "linkedin.com/in/samsul-sidiq-471a8a443",
     github: (typeof profileData !== "undefined" && profileData.github) ? profileData.github : "https://github.com/SamsulSidiq",
     githubDisplay: (typeof profileData !== "undefined" && profileData.githubDisplay) ? profileData.githubDisplay : "github.com/SamsulSidiq",
     university: (typeof profileData !== "undefined" && profileData.university) ? profileData.university : "Institut Digital Ekonomi LPKIA Bandung",
@@ -37,25 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setupEventListeners();
 });
 
-// Load profile state with priority: localStorage -> profil.js -> default
+// Load profile state directly from profil.js
 function loadProfileState() {
     let base = { ...defaultProfile };
     if (typeof profileData !== "undefined") {
         base = { ...base, ...profileData };
     }
-
-    const saved = localStorage.getItem("portfolio_profile_data_v3");
-    if (saved) {
-        try {
-            const parsed = JSON.parse(saved);
-            activeProfile = { ...base, ...parsed };
-        } catch (e) {
-            activeProfile = { ...base };
-        }
-    } else {
-        activeProfile = { ...base };
-    }
-
+    activeProfile = { ...base };
     renderProfileData();
 }
 
@@ -236,89 +224,6 @@ function initSkillFilters() {
 
 // Modals
 function initModals() {
-    const editModal = document.getElementById("edit-modal");
-    const openEditBtns = [document.getElementById("open-edit-modal-btn"), document.getElementById("open-edit-hero-btn")];
-    const closeEditBtn = document.getElementById("close-edit-modal-btn");
-    const cancelEditBtn = document.getElementById("cancel-edit-btn");
-    const profileForm = document.getElementById("profile-form");
-    const resetProfileBtn = document.getElementById("reset-profile-btn");
-
-    function openEdit() {
-        document.getElementById("input-fullName").value = activeProfile.fullName || "";
-        document.getElementById("input-title").value = activeProfile.title || "";
-        document.getElementById("input-degree").value = activeProfile.degree || "";
-        document.getElementById("input-status").value = activeProfile.status || "";
-        document.getElementById("input-email").value = activeProfile.email || "";
-        document.getElementById("input-phone").value = activeProfile.phone || "";
-        document.getElementById("input-location").value = activeProfile.location || "";
-        document.getElementById("input-linkedin").value = activeProfile.linkedin || "";
-        document.getElementById("input-github").value = activeProfile.github || "";
-        document.getElementById("input-university").value = activeProfile.university || "";
-        document.getElementById("input-major").value = activeProfile.major || "";
-        document.getElementById("input-gradYear").value = activeProfile.gradYear || "";
-        document.getElementById("input-bio").value = activeProfile.bio || "";
-        document.getElementById("input-primasagaPeriod").value = activeProfile.primasagaPeriod || "";
-        document.getElementById("input-gmbePeriod").value = activeProfile.gmbePeriod || "";
-
-        editModal.classList.remove("hidden");
-        document.body.classList.add("overflow-hidden");
-    }
-
-    function closeEdit() {
-        editModal.classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
-    }
-
-    openEditBtns.forEach(btn => {
-        if (btn) btn.addEventListener("click", openEdit);
-    });
-
-    if (closeEditBtn) closeEditBtn.addEventListener("click", closeEdit);
-    if (cancelEditBtn) cancelEditBtn.addEventListener("click", closeEdit);
-
-    if (profileForm) {
-        profileForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            activeProfile = {
-                ...activeProfile,
-                fullName: document.getElementById("input-fullName").value.trim() || defaultProfile.fullName,
-                title: document.getElementById("input-title").value.trim() || defaultProfile.title,
-                degree: document.getElementById("input-degree").value.trim() || defaultProfile.degree,
-                status: document.getElementById("input-status").value.trim() || defaultProfile.status,
-                email: document.getElementById("input-email").value.trim() || defaultProfile.email,
-                phone: document.getElementById("input-phone").value.trim() || defaultProfile.phone,
-                location: document.getElementById("input-location").value.trim() || defaultProfile.location,
-                linkedin: document.getElementById("input-linkedin").value.trim() || defaultProfile.linkedin,
-                linkedinDisplay: document.getElementById("input-linkedin").value.trim().replace(/^https?:\/\//, '') || defaultProfile.linkedinDisplay,
-                github: document.getElementById("input-github").value.trim() || defaultProfile.github,
-                githubDisplay: document.getElementById("input-github").value.trim().replace(/^https?:\/\//, '') || defaultProfile.githubDisplay,
-                university: document.getElementById("input-university").value.trim() || defaultProfile.university,
-                major: document.getElementById("input-major").value.trim() || defaultProfile.major,
-                gradYear: document.getElementById("input-gradYear").value.trim() || defaultProfile.gradYear,
-                bio: document.getElementById("input-bio").value.trim() || defaultProfile.bio,
-                primasagaPeriod: document.getElementById("input-primasagaPeriod").value.trim() || defaultProfile.primasagaPeriod,
-                gmbePeriod: document.getElementById("input-gmbePeriod").value.trim() || defaultProfile.gmbePeriod
-            };
-
-            localStorage.setItem("portfolio_profile_data_v3", JSON.stringify(activeProfile));
-            renderProfileData();
-            closeEdit();
-            showToast("✨ Data portofolio berhasil diperbarui!");
-        });
-    }
-
-    if (resetProfileBtn) {
-        resetProfileBtn.addEventListener("click", () => {
-            if (confirm("Kembalikan data biodata ke data asli Mochamad Shcamsul Sieddik Permana?")) {
-                localStorage.removeItem("portfolio_profile_data_v3");
-                activeProfile = { ...defaultProfile };
-                renderProfileData();
-                closeEdit();
-                showToast("🔄 Data telah dikembalikan ke default.");
-            }
-        });
-    }
-
     // Project Modals
     setupModal("project-modal-1", "open-modal-1", "close-modal-1");
     setupModal("project-modal-2", "open-modal-2", "close-modal-2");

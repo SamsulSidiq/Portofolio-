@@ -25,7 +25,7 @@ Website portofolio modern, responsif, dan interaktif yang dibangun secara khusus
    - **Pendidikan**: Sarjana (S1) Teknik Informatika, Institut Digital Ekonomi LPKIA Bandung, Lulusan 2026.
 
 3. **Fitur Interaktif Canggih**:
-   - ✏️ **Modal Kustomisasi Data Portofolio**: Pengguna dapat mengubah nama, email, no HP, kampus, prodi, dan bio secara langsung melalui tombol "Kustomisasi Data Saya" di browser tanpa perlu mengedit kode manual. Data tersimpan otomatis di `localStorage`.
+   - 📇 **Kontak Resmi Langsung**: Menampilkan tautan langsung dan salin cepat ke WhatsApp, Email, profil GitHub, serta LinkedIn profesional.
    - 🌓 **Dark Mode / Light Mode**: Tombol peralihan tema otomatis dengan penyimpanan preferensi.
    - 🖨️ **Cetak CV / Ekspor PDF**: Dilengkapi stylesheet print khusus (`@media print`) yang menyembunyikan tombol navigasi dan merapikan halaman menjadi dokumen CV siap cetak/kirim.
    - 📋 **Salin Kontak Satu Klik**: Tombol salin email dan nomor WhatsApp dengan notifikasi toast.

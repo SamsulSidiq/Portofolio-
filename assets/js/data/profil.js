@@ -13,10 +13,10 @@ const profileData = {
 
     // Kontak Resmi
     email: "samsulsidiq120@gmail.com",
-    phone: "+62 812-3456-7890",
+    phone: "+62 831-4304-8170",
     location: "Bandung, Jawa Barat",
-    linkedin: "https://linkedin.com/in/username",
-    linkedinDisplay: "linkedin.com/in/username",
+    linkedin: "https://www.linkedin.com/in/samsul-sidiq-471a8a443",
+    linkedinDisplay: "linkedin.com/in/samsul-sidiq-471a8a443",
     github: "https://github.com/SamsulSidiq",
     githubDisplay: "github.com/SamsulSidiq",
 
